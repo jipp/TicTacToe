@@ -22,11 +22,7 @@ class Field {
         content = Array(count: self.z, repeatedValue: Array(count: self.z, repeatedValue: Figure.empty))
     }
     
-    func getRows() -> Int {
-        return z
-    }
-    
-    func getColumns() -> Int {
+    func getLines() -> Int {
         return z
     }
     
@@ -60,9 +56,11 @@ class Field {
         print()
     }
     
-    func checkAllowed(x: Int, y: Int) -> Bool {
-        if (content[x][y] == Figure.empty) {
-            return true
+    func allowedMove(x: Int, y: Int) -> Bool {
+        if (x>=0 && x<z && y>=0 && y<z) {
+            if (content[x][y] == Figure.empty) {
+                return true
+            }
         }
         return false
     }
@@ -82,8 +80,8 @@ class Field {
     }
     
     func draw() -> Bool {
-        for i in 0...getRows()-1 {
-            for j in 0...getColumns()-1 {
+        for i in 0...getLines()-1 {
+            for j in 0...getLines()-1 {
                 if (content[i][j] == Figure.empty) {
                     return false
                 }

@@ -16,16 +16,16 @@ class Human: PlayerClass {
         
         print("\(figure) turn")
         repeat {
-            print("Eingabe: ", terminator:"")
+            print("Input: ", terminator:"")
             input = readLine()!
             if let position = Int(input) {
                 if (position > 0 && position <= field.getSize()) {
-                    x = (position - 1) / field.getColumns()
-                    y = (position - 1) % field.getRows()
+                    x = (position - 1) / field.getLines()
+                    y = (position - 1) % field.getLines()
                     break
                 }
             }
-        } while !field.checkAllowed(x, y: y)
+        } while !field.allowedMove(x, y: y)
         return (x, y)
     }
 }
