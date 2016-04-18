@@ -1,6 +1,9 @@
 # TicTacToe
 cli based TicTacToe for OS X using Xcode
 
+## Installaation
+* compile using Xcode 7.3
+
 ## Additional configuration
 * alternatively compile the *.swift files and creating an executable using:
 swift *.swift -o tictactoe
