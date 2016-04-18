@@ -1,8 +1,5 @@
 # TicTacToe
-CLI based TicTacToe game programmed with Xcode 7.3
-
-## Installation
-* Open project in Xcode
+cli based TicTacToe for OS X
 
 ## Additional configuration
 * alternatively compile the *.swift files: swift *.swift -o tictactos
