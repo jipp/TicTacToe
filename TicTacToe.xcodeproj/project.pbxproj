@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5D81C57A1CC404A900F8899E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D81C5791CC404A900F8899E /* main.swift */; };
+		5D81C5811CC404E900F8899E /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D81C5801CC404E900F8899E /* Field.swift */; };
+		5D81C5831CC4054000F8899E /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D81C5821CC4054000F8899E /* Figure.swift */; };
+		5D81C5851CC4058200F8899E /* PlayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D81C5841CC4058200F8899E /* PlayerProtocol.swift */; };
+		5D81C5871CC4065000F8899E /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D81C5861CC4065000F8899E /* Human.swift */; };
+		5D81C5891CC4089800F8899E /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D81C5881CC4089800F8899E /* PlayerClass.swift */; };
+		5D81C58B1CC4105600F8899E /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D81C58A1CC4105600F8899E /* Status.swift */; };
+		5D81C58D1CC41B0C00F8899E /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D81C58C1CC41B0C00F8899E /* Computer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,13 @@
 /* Begin PBXFileReference section */
 		5D81C5761CC404A900F8899E /* TicTacToe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TicTacToe; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D81C5791CC404A900F8899E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5D81C5801CC404E900F8899E /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		5D81C5821CC4054000F8899E /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
+		5D81C5841CC4058200F8899E /* PlayerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProtocol.swift; sourceTree = "<group>"; };
+		5D81C5861CC4065000F8899E /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		5D81C5881CC4089800F8899E /* PlayerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
+		5D81C58A1CC4105600F8899E /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		5D81C58C1CC41B0C00F8899E /* Computer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,13 @@
 			isa = PBXGroup;
 			children = (
 				5D81C5791CC404A900F8899E /* main.swift */,
+				5D81C58A1CC4105600F8899E /* Status.swift */,
+				5D81C5801CC404E900F8899E /* Field.swift */,
+				5D81C5821CC4054000F8899E /* Figure.swift */,
+				5D81C5841CC4058200F8899E /* PlayerProtocol.swift */,
+				5D81C5881CC4089800F8899E /* PlayerClass.swift */,
+				5D81C5861CC4065000F8899E /* Human.swift */,
+				5D81C58C1CC41B0C00F8899E /* Computer.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -119,7 +140,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D81C58D1CC41B0C00F8899E /* Computer.swift in Sources */,
+				5D81C5851CC4058200F8899E /* PlayerProtocol.swift in Sources */,
+				5D81C5811CC404E900F8899E /* Field.swift in Sources */,
+				5D81C58B1CC4105600F8899E /* Status.swift in Sources */,
+				5D81C5871CC4065000F8899E /* Human.swift in Sources */,
 				5D81C57A1CC404A900F8899E /* main.swift in Sources */,
+				5D81C5891CC4089800F8899E /* PlayerClass.swift in Sources */,
+				5D81C5831CC4054000F8899E /* Figure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
