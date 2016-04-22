@@ -8,83 +8,85 @@
 
 import Foundation
 
-class Computer: PlayerClass {
-    enum Goal: Int {
-        case win = 1
-        case avoidLoose = -1
-    }
+class Computer: PlayerClass {    
+    override func getMove(content: [[Figure]]) -> (x: Int, y: Int) {
+		var weightTemp: Int = 0
+		var weightAll: Int = 0
+		var x: Int = 0
+		var y: Int = 0
     
-    override func getMove(field: Field) ->  (Int, Int) {
-        var x: Int = -1
-        var y: Int = -1
-        
-        print("\(figure) turn")
-        if (!field.allowedMove(x, y: y)) {
-            (x, y) = checkMove(field, goal: Goal.win)
-        }
-        if (!field.allowedMove(x, y: y)) {
-            (x, y) = checkMove(field, goal: Goal.avoidLoose)
-        }
-        if (!field.allowedMove(x, y: y)) {
-            (x, y) = randomMove(field)
-        }
-        return (x, y)
-    }
+		for i in 0...content.count-1 {
+			for j in 0...content.count-1 {
+				weightTemp = weightPerCell(content, x:i, y:j)
+				if (weightTemp > weightAll) {
+					weightAll = weightTemp
+					x = i
+					y = j
+				}
+			}
+		}
+		return (x, y)
+	}
+
+	func weightPerCell(content: [[Figure]], x: Int, y: Int) -> Int {
+		var weight: Int = 0
+
+		if (content[y][x] == Figure.empty) {
+			weight += checkRow(content, y:y)
+			weight += checkColumn(content, x:x)
+			if (x == y) {
+				weight += checkBackSlash(content)
+			}
+			if (x == content.count-1-y) {
+				weight += checkSlash(content)
+			}
+		} 
+		return weight
+	}
+
+	func checkRow(content: [[Figure]], y: Int) -> Int {
+		var sum: Int = 0
     
-    func randomMove(field: Field) -> (Int, Int) {
-        repeat {
-            x = Int(arc4random_uniform(UInt32(field.getLines())))
-            y = Int(arc4random_uniform(UInt32(field.getLines())))
-        } while !field.allowedMove(x, y: y)
-        return (x, y)
-    }
+		for x in 0...content.count-1 {
+			sum += content[y][x].rawValue
+		}
+		return returnWeight(sum)
+	}
+
+	func checkColumn(content: [[Figure]], x: Int) -> Int {
+		var sum: Int = 0
     
-    func checkMove(field: Field, goal: Goal) -> (Int, Int) {
-        var vSum: Int = 0
-        var hSum: Int = 0
-        var dSum: Int = 0
-        var rSum: Int = 0
-        
-        for i in 0...field.getLines()-1 {
-            hSum = 0
-            vSum = 0
-            for j in 0...field.getLines()-1 {
-                vSum += field.content[j][i].rawValue
-                hSum += field.content[i][j].rawValue
-            }
-            if (vSum == (field.getLines()-1) * figure.rawValue * goal.rawValue) {
-                for k in 0...field.getLines()-1 {
-                    if (field.content[k][i] == Figure.empty) {
-                        return (k,i)
-                    }
-                }
-            }
-            if (hSum == (field.getLines()-1) * figure.rawValue * goal.rawValue) {
-                for k in 0...field.getLines()-1 {
-                    if (field.content[i][k] == Figure.empty) {
-                        return (i, k)
-                    }
-                }
-            }
-        }
-        for i in 0...field.getLines()-1 {
-            dSum += field.content[i][i].rawValue
-            rSum += field.content[i][field.getLines() - 1 - i].rawValue
-        }
-        if (dSum == (field.getLines()-1) * figure.rawValue * goal.rawValue) {
-            for i in 0...field.getLines()-1 {
-                if (field.content[i][i] == Figure.empty) {
-                    return (i, i)
-                }
-            }
-        }
-        if (rSum == (field.getLines()-1) * figure.rawValue * goal.rawValue) {
-            for i in 0...field.getLines()-1 {
-                if (field.content[i][field.getLines()-1-i] == Figure.empty) {
-                    return (i, field.getLines()-1-i)
-                }
-            }
-        }
-        return (-1, -1)
-    }
+		for y in 0...content.count-1 {
+			sum += content[y][x].rawValue
+		}
+		return returnWeight(sum)
+	}
+
+	func checkBackSlash(content: [[Figure]]) -> Int {
+		var sum: Int = 0
+		
+		for i in 0...content.count-1 {
+			sum += content[i][i].rawValue
+		}
+		return returnWeight(sum)
+	}
+
+	func checkSlash(content: [[Figure]]) -> Int {
+		var sum: Int = 0
+		
+		for i in 0...content.count-1 {
+			sum += content[i][content.count-1-i].rawValue
+		}   
+		return returnWeight(sum)
+	}
+
+	func returnWeight(cell: Int) -> Int {
+		
+		for i in -content.count+1...content.count-1 {
+			if (cell == i) {
+				return Int(pow(10.0, Double(abs(i)))) * (2+figure.rawValue)
+			}
+		}
+		return -1000000
+	}
 }
