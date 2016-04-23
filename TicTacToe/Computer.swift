@@ -23,6 +23,7 @@ class Computer: PlayerClass {
 					x = i
 					y = j
 				}
+				print(weightTemp)
 			}
 		}
 		return (x, y)
@@ -64,7 +65,7 @@ class Computer: PlayerClass {
 
 	func checkBackSlash(content: [[Figure]]) -> Int {
 		var sum: Int = 0
-		
+    
 		for i in 0...content.count-1 {
 			sum += content[i][i].rawValue
 		}
@@ -73,18 +74,21 @@ class Computer: PlayerClass {
 
 	func checkSlash(content: [[Figure]]) -> Int {
 		var sum: Int = 0
-		
+    
 		for i in 0...content.count-1 {
-			sum += content[i][content.count-1-i].rawValue
+			sum += content[content.count-1-i][i].rawValue
 		}   
 		return returnWeight(sum)
 	}
 
-	func returnWeight(cell: Int) -> Int {
-		
+	func returnWeight(cell: Int) -> Int { 
 		for i in -content.count+1...content.count-1 {
 			if (cell == i) {
-				return Int(pow(10.0, Double(abs(i)))) * (2+figure.rawValue)
+				if (i*figure.rawValue > 0) {
+					return Int(pow(10.0, Double(abs(i))))*2
+				} else {
+					return Int(pow(10.0, Double(abs(i))))
+				}
 			}
 		}
 		return -1000000
