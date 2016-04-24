@@ -1,8 +1,9 @@
 # TicTacToe
-cli based TicTacToe for OS X
+cli based TicTacToe for OS X using Xcode
 
 ## Additional configuration
-* alternatively compile the *.swift files: swift *.swift -o tictactos
+* alternatively compile the *.swift files and creating an executable using:
+swift *.swift -o tictactos
 
 ## Info
-This is a prototype to get first touch with Swift}
+This is a prototype to get first touch with Swift w/o any graphics
