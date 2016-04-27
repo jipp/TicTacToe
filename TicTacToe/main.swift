@@ -10,7 +10,8 @@ import Foundation
 
 var field: Field?
 var player1: Human = Human(figure: Figure.X)
-var player2: ComputerWeight = ComputerWeight(figure: Figure.O)
+//var player2: ComputerWeight = ComputerWeight(figure: Figure.O)
+var player2: ComputerRandom = ComputerRandom(figure: Figure.O)
 var players: [PlayerClass] = [player1, player2]
 var x: Int
 var y: Int
