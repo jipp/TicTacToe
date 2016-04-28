@@ -109,20 +109,16 @@ class Field {
                 break
             }
         }
-        
         for i in 0...z-1 {
             dSum += field!.content[i][i].rawValue
             rSum += field!.content[i][z - 1 - i].rawValue
         }
-        
         if (abs(dSum) == z || abs(rSum) == z) {
             check = true
         }
-        
         if (check == true) {
             return true
         }
         return false
     }
-
 }
