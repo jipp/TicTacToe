@@ -20,8 +20,8 @@ class ComputerWeight: PlayerClass {
 				weightTemp = weightPerCell(field, x:i, y:j)
 				if (weightTemp > weightAll) {
 					weightAll = weightTemp
-					x = i
-					y = j
+                    x = j
+					y = i
 				}
 			}
 		}
@@ -40,7 +40,7 @@ class ComputerWeight: PlayerClass {
 			if (x == field.getLines()-1-y) {
 				weight += checkSlash(field)
 			}
-		} 
+		}
 		return weight
 	}
 
