@@ -12,4 +12,5 @@ enum PlayerEnum {
     case Human
     case ComputerRandom
     case ComputerWeight
+    case ComputerMiniMax
 }

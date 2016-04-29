@@ -14,7 +14,7 @@ class PlayerFactory {
         case .Human: return Human(figure: figure)
         case .ComputerRandom: return ComputerRandom(figure: figure)
         case .ComputerWeight: return ComputerWeight(figure: figure)
-        default: return nil
+        default: print("\n> Player not existing\n"); return nil
         }
     }
 }
