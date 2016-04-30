@@ -10,7 +10,7 @@ import Foundation
 
 var field: Field?
 var player1: PlayerClass = PlayerFactory.create(PlayerEnum.Human, figure: Figure.X)!
-var player2: PlayerClass = PlayerFactory.create(PlayerEnum.ComputerMiniMax, figure: Figure.O)!
+var player2: PlayerClass = PlayerFactory.create(PlayerEnum.ComputerRandom, figure: Figure.O)!
 var players: [PlayerClass] = [player1, player2]
 var x: Int
 var y: Int
@@ -20,7 +20,6 @@ while true {
     field!.show()
     gameLoop: for i in 0...field!.getSize() {
         (x, y) = players[i%2].getMove(field!)
-        print(x, y)
         field!.set(x, y: y, figure: players[i%2].figure)
         field!.show()
         switch field!.getStatus() {

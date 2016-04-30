@@ -15,6 +15,7 @@ class ComputerWeight: PlayerClass {
 		var x: Int = 0
 		var y: Int = 0
     
+        print("\(figure) turn")
 		for i in 0...field.getLines()-1 {
 			for j in 0...field.getLines()-1 {
 				weightTemp = weightPerCell(field, x:i, y:j)

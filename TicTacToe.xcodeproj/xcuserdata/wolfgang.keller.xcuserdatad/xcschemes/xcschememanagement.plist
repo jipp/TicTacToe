@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>woke.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>5D81C5751CC404A900F8899E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5DF380C71CD365DC00821240</key>
 		<dict>
 			<key>primary</key>
 			<true/>

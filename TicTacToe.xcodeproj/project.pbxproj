@@ -45,10 +45,18 @@
 		5D81C58A1CC4105600F8899E /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		5D81C58C1CC41B0C00F8899E /* ComputerWeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWeight.swift; sourceTree = "<group>"; };
 		5DCF285E1CD1588600661CC4 /* ComputerRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerRandom.swift; sourceTree = "<group>"; };
+		5DF380C81CD365DC00821240 /* woke.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = woke.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5D81C5731CC404A900F8899E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DF380C51CD365DC00821240 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -70,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				5D81C5761CC404A900F8899E /* TicTacToe */,
+				5DF380C81CD365DC00821240 /* woke.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +121,23 @@
 			productReference = 5D81C5761CC404A900F8899E /* TicTacToe */;
 			productType = "com.apple.product-type.tool";
 		};
+		5DF380C71CD365DC00821240 /* woke */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DF380CD1CD365DC00821240 /* Build configuration list for PBXNativeTarget "woke" */;
+			buildPhases = (
+				5DF380C41CD365DC00821240 /* Sources */,
+				5DF380C51CD365DC00821240 /* Frameworks */,
+				5DF380C61CD365DC00821240 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = woke;
+			productName = woke;
+			productReference = 5DF380C81CD365DC00821240 /* woke.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -123,6 +149,9 @@
 				ORGANIZATIONNAME = "Wolfgang Keller";
 				TargetAttributes = {
 					5D81C5751CC404A900F8899E = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					5DF380C71CD365DC00821240 = {
 						CreatedOnToolsVersion = 7.3;
 					};
 				};
@@ -140,9 +169,20 @@
 			projectRoot = "";
 			targets = (
 				5D81C5751CC404A900F8899E /* TicTacToe */,
+				5DF380C71CD365DC00821240 /* woke */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5DF380C61CD365DC00821240 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5D81C5721CC404A900F8899E /* Sources */ = {
@@ -160,6 +200,13 @@
 				5D81C57A1CC404A900F8899E /* main.swift in Sources */,
 				5D81C5891CC4089800F8899E /* PlayerClass.swift in Sources */,
 				5D81C5831CC4054000F8899E /* Figure.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DF380C41CD365DC00821240 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +309,28 @@
 			};
 			name = Release;
 		};
+		5DF380CE1CD365DC00821240 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = woke/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.wobilix.woke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5DF380CF1CD365DC00821240 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = woke/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.wobilix.woke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -279,6 +348,15 @@
 			buildConfigurations = (
 				5D81C57E1CC404A900F8899E /* Debug */,
 				5D81C57F1CC404A900F8899E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DF380CD1CD365DC00821240 /* Build configuration list for PBXNativeTarget "woke" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DF380CE1CD365DC00821240 /* Debug */,
+				5DF380CF1CD365DC00821240 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
