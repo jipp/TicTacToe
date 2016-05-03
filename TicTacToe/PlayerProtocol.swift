@@ -12,5 +12,6 @@ protocol PlayerProtocol {
     var figure: Figure { get }
     
     func getFigure() -> Figure
+    func getOpponent() ->  Figure
     func getMove(field: Field) -> (Int, Int)
 }

@@ -15,8 +15,16 @@ class PlayerClass: PlayerProtocol {
         self.figure = figure
     }
     
-    func getFigure() -> Figure{
+    func getFigure() -> Figure {
         return figure
+    }
+    
+    func getOpponent() -> Figure {
+        switch (figure) {
+        case Figure.X: return Figure.O
+        case Figure.O: return Figure.X
+        default: return Figure.empty
+        }
     }
     
     func getMove(field: Field) -> (Int, Int) {
