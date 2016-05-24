@@ -21,8 +21,8 @@ class ComputerWeight: PlayerClass {
 				weightTemp = weightPerCell(field, x:i, y:j)
 				if (weightTemp > weightAll) {
 					weightAll = weightTemp
-                    x = j
-					y = i
+                    x = i
+					y = j
 				}
 			}
 		}
@@ -32,7 +32,7 @@ class ComputerWeight: PlayerClass {
 	func weightPerCell(field: Field, x: Int, y: Int) -> Int {
 		var weight: Int = 0
 
-		if (field.content[y][x] == Figure.empty) {
+		if (field.content[x][y] == Figure.empty) {
 			weight += checkRow(field, y:y)
 			weight += checkColumn(field, x:x)
 			if (x == y) {
@@ -49,7 +49,7 @@ class ComputerWeight: PlayerClass {
 		var sum: Int = 0
     
 		for x in 0...field.getLines()-1 {
-			sum += field.content[y][x].rawValue
+			sum += field.content[x][y].rawValue
 		}
 		return returnWeight(sum)
 	}
@@ -58,7 +58,7 @@ class ComputerWeight: PlayerClass {
 		var sum: Int = 0
     
 		for y in 0...field.getLines()-1 {
-			sum += field.content[y][x].rawValue
+			sum += field.content[x][y].rawValue
 		}
 		return returnWeight(sum)
 	}

@@ -119,6 +119,7 @@ class Field {
         if (check == true) {
             return true
         }
+        print("false")
         return false
     }
 }

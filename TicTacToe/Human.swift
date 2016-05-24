@@ -22,7 +22,6 @@ class Human: PlayerClass {
                 if (position > 0 && position <= field.getSize()) {
                     x = (position - 1) / field.getLines()
                     y = (position - 1) % field.getLines()
-                    break
                 }
             }
         } while !field.allowedMove(x, y: y)

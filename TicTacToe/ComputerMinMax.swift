@@ -12,25 +12,26 @@ class ComputerMinMax: PlayerClass {
     
     override func getMove(field: Field) -> (x: Int, y: Int) {
         var ratedField: Int = 0
-        var maxRated: Int = 0
+        var maxRated: Int = Int.min
         
         print("\(figure) turn")
         for i in 0 ... field.getLines()-1 {
             for j in 0 ... field.getLines()-1 {
                 if (field.content[i][j] == Figure.empty) {
+                    print("check field:", i, j)
                     field.content[i][j] = figure
-                    ratedField = minMax(field, depth: 9, maximizingPlayer: true, figure: figure)
+                    ratedField = minMax(field, depth: 1, maximizingPlayer: true, figure: figure)
                     field.content[i][j] = Figure.empty
-                    print(i,j)
                     if (ratedField > maxRated) {
-                        x = j
-                        y = i
+                        x = i
+                        y = j
                         maxRated = ratedField
-                        print(x, y, maxRated)
+                        print(" maxRated:", maxRated)
                     }
                 }
             }
         }
+        print(" ", x, y)
         return (x, y)
     }
     
@@ -38,26 +39,30 @@ class ComputerMinMax: PlayerClass {
         var bestValue: Int
         var v: Int
         
-        if (depth == 0 || field.draw()) {
-            return 0
-        }
-        
+        print(" depth:", depth, "maximizingPlayer:", maximizingPlayer)
         if (field.won()) {
             if (maximizingPlayer) {
+                print(" 3")
                 return 3
             } else {
+                print(" -3")
                 return -3
             }
         }
         
+        if (depth == 0 || field.draw()) {
+            print(" return 0")
+            return 0
+        }
+
         if (maximizingPlayer) {
             bestValue = Int.min
-            for y in 0 ... field.getLines()-1 {
-                for x in 0 ... field.getLines()-1 {
-                    if (field.content[y][x] == Figure.empty) {
-                        field.content[y][x] = getOpponent()
-                        v = minMax(field, depth: depth - 1, maximizingPlayer: false, figure: figure)
-                        field.content[y][x] = Figure.empty
+            for i in 0...field.getLines()-1 {
+                for j in 0...field.getLines()-1 {
+                    if (field.content[i][j] == Figure.empty) {
+                        field.content[i][j] = figure
+                        v = minMax(field, depth: depth - 1, maximizingPlayer: false, figure: getOpponent())
+                        field.content[i][j] = Figure.empty
                         bestValue = max(bestValue, v)
                     }
                 }
@@ -65,12 +70,12 @@ class ComputerMinMax: PlayerClass {
             return bestValue
         } else {
             bestValue = Int.max
-            for y in 0 ... field.getLines()-1 {
-                for x in 0 ... field.getLines()-1 {
-                    if (field.content[y][x] == Figure.empty) {
-                        field.content[y][x] = figure
-                        v = minMax(field, depth: depth - 1, maximizingPlayer: true, figure: getOpponent())
-                        field.content[y][x] = Figure.empty
+            for i in 0...field.getLines()-1 {
+                for j in 0...field.getLines()-1 {
+                    if (field.content[i][j] == Figure.empty) {
+                        field.content[i][j] = getOpponent()
+                        v = minMax(field, depth: depth - 1, maximizingPlayer: true, figure: figure)
+                        field.content[i][j] = Figure.empty
                         bestValue = min(bestValue, v)
                     }
                 }
