@@ -88,8 +88,8 @@
 				5D0A25F51CD28DD300B8C71D /* PlayerEnum.swift */,
 				5D0A25F71CD28E4D00B8C71D /* PlayerFactory.swift */,
 				5D81C5861CC4065000F8899E /* Human.swift */,
-				5D81C58C1CC41B0C00F8899E /* ComputerWeight.swift */,
 				5DCF285E1CD1588600661CC4 /* ComputerRandom.swift */,
+				5D81C58C1CC41B0C00F8899E /* ComputerWeight.swift */,
 				5D7F2B371CE6633100A83790 /* ComputerMinMax.swift */,
 			);
 			path = TicTacToe;

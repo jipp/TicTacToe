@@ -18,69 +18,67 @@ class ComputerMinMax: PlayerClass {
         for i in 0 ... field.getLines()-1 {
             for j in 0 ... field.getLines()-1 {
                 if (field.content[i][j] == Figure.empty) {
-                    print("check field:", i, j)
                     field.content[i][j] = figure
-                    ratedField = minMax(field, depth: 1, maximizingPlayer: true, figure: figure)
+                    ratedField = maximizing(field, depth: 7)
                     field.content[i][j] = Figure.empty
                     if (ratedField > maxRated) {
                         x = i
                         y = j
                         maxRated = ratedField
-                        print(" maxRated:", maxRated)
                     }
                 }
             }
         }
-        print(" ", x, y)
         return (x, y)
     }
     
-    func minMax(field: Field, depth: Int, maximizingPlayer: Bool, figure: Figure) -> Int {
-        var bestValue: Int
+    func maximizing(field: Field, depth: Int) -> Int {
+        var bestValue: Int = Int.max
         var v: Int
         
-        print(" depth:", depth, "maximizingPlayer:", maximizingPlayer)
         if (field.won()) {
-            if (maximizingPlayer) {
-                print(" 3")
-                return 3
-            } else {
-                print(" -3")
-                return -3
+            return 1
+        }
+        if (field.draw() || depth == 0) {
+            return 0
+        }
+        
+        for i in 0...field.getLines()-1 {
+            for j in 0...field.getLines()-1 {
+                if (field.content[i][j] == Figure.empty) {
+                    field.content[i][j] = getOpponent()
+                    v = minimizing(field, depth: depth-1)
+                    field.content[i][j] = Figure.empty
+                    bestValue = min(bestValue, v)
+                }
             }
         }
         
-        if (depth == 0 || field.draw()) {
-            print(" return 0")
+        return bestValue
+    }
+    
+    func minimizing(field: Field, depth: Int) -> Int {
+        var bestValue: Int = Int.min
+        var v: Int
+
+        if (field.won()) {
+            return  -1
+        }
+        if (field.draw() || depth == 0) {
             return 0
         }
-
-        if (maximizingPlayer) {
-            bestValue = Int.min
-            for i in 0...field.getLines()-1 {
-                for j in 0...field.getLines()-1 {
-                    if (field.content[i][j] == Figure.empty) {
-                        field.content[i][j] = figure
-                        v = minMax(field, depth: depth - 1, maximizingPlayer: false, figure: getOpponent())
-                        field.content[i][j] = Figure.empty
-                        bestValue = max(bestValue, v)
-                    }
+        
+        for i in 0...field.getLines()-1 {
+            for j in 0...field.getLines()-1 {
+                if (field.content[i][j] == Figure.empty) {
+                    field.content[i][j] = figure
+                    v = maximizing(field, depth: depth-1)
+                    field.content[i][j] = Figure.empty
+                    bestValue = max(bestValue, v)
                 }
             }
-            return bestValue
-        } else {
-            bestValue = Int.max
-            for i in 0...field.getLines()-1 {
-                for j in 0...field.getLines()-1 {
-                    if (field.content[i][j] == Figure.empty) {
-                        field.content[i][j] = getOpponent()
-                        v = minMax(field, depth: depth - 1, maximizingPlayer: true, figure: figure)
-                        field.content[i][j] = Figure.empty
-                        bestValue = min(bestValue, v)
-                    }
-                }
-            }
-            return bestValue
         }
+        
+        return bestValue
     }
 }
