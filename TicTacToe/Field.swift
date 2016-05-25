@@ -70,11 +70,11 @@ class Field {
     }
     
     func getStatus() -> Status {
-        if draw() {
-            return Status.draw
-        }
         if won() {
             return Status.won
+        }
+        if draw() {
+            return Status.draw
         }
         return Status.ongoing
     }
