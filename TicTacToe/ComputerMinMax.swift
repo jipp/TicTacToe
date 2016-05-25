@@ -19,7 +19,7 @@ class ComputerMinMax: PlayerClass {
             for j in 0 ... field.getLines()-1 {
                 if (field.content[i][j] == Figure.empty) {
                     field.content[i][j] = figure
-                    ratedField = maximizing(field, depth: 7)
+                    ratedField = maximizing(field, depth: 9)
                     field.content[i][j] = Figure.empty
                     if (ratedField > maxRated) {
                         x = i
