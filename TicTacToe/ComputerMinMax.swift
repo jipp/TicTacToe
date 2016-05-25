@@ -9,17 +9,20 @@
 import Foundation
 
 class ComputerMinMax: PlayerClass {
+    var count: Int = 0
     
     override func getMove(field: Field) -> (x: Int, y: Int) {
         var ratedField: Int = 0
         var maxRated: Int = Int.min
+        
+        count = 0
         
         print("\(figure) turn")
         for i in 0 ... field.getLines()-1 {
             for j in 0 ... field.getLines()-1 {
                 if (field.content[i][j] == Figure.empty) {
                     field.content[i][j] = figure
-                    ratedField = maximizing(field, depth: 9)
+                    ratedField = maximizing(field, depth: 9, alpha: Int.min, beta: Int.max)
                     field.content[i][j] = Figure.empty
                     if (ratedField > maxRated) {
                         x = i
@@ -29,12 +32,16 @@ class ComputerMinMax: PlayerClass {
                 }
             }
         }
+        
+        print("Count:", count)
         return (x, y)
     }
     
-    func maximizing(field: Field, depth: Int) -> Int {
-        var bestValue: Int = Int.max
-        var v: Int
+    func maximizing(field: Field, depth: Int, alpha: Int, beta: Int) -> Int {
+        var maxValue: Int = Int.max
+        var value: Int
+        
+        count += 1
         
         if (field.won()) {
             return 1
@@ -47,19 +54,21 @@ class ComputerMinMax: PlayerClass {
             for j in 0...field.getLines()-1 {
                 if (field.content[i][j] == Figure.empty) {
                     field.content[i][j] = getOpponent()
-                    v = minimizing(field, depth: depth-1)
+                    value = minimizing(field, depth: depth-1, alpha: Int.max, beta: beta)
                     field.content[i][j] = Figure.empty
-                    bestValue = min(bestValue, v)
+                    maxValue = min(maxValue, value)
                 }
             }
         }
         
-        return bestValue
+        return maxValue
     }
     
-    func minimizing(field: Field, depth: Int) -> Int {
-        var bestValue: Int = Int.min
-        var v: Int
+    func minimizing(field: Field, depth: Int, alpha: Int, beta: Int) -> Int {
+        var minValue: Int = Int.min
+        var value: Int
+        
+        count += 1
 
         if (field.won()) {
             return  -1
@@ -72,13 +81,13 @@ class ComputerMinMax: PlayerClass {
             for j in 0...field.getLines()-1 {
                 if (field.content[i][j] == Figure.empty) {
                     field.content[i][j] = figure
-                    v = maximizing(field, depth: depth-1)
+                    value = maximizing(field, depth: depth-1, alpha: alpha, beta: Int.min)
                     field.content[i][j] = Figure.empty
-                    bestValue = max(bestValue, v)
+                    minValue = max(minValue, value)
                 }
             }
         }
         
-        return bestValue
+        return minValue
     }
 }
