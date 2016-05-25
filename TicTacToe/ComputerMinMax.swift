@@ -16,9 +16,9 @@ class ComputerMinMax: PlayerClass {
         
         print("\(figure) turn")
         
-        (x, y) = maximizing(field, depth: 8)
+        (x, y) = maximizing(field, depth: 10)
 
-        print("Count:", count)
+        print(" (\(count))")
         return (x, y)
     }
     
@@ -34,6 +34,7 @@ class ComputerMinMax: PlayerClass {
                     field.content[i][j] = figure
                     value = minimizing(field, depth: depth-1)
                     field.content[i][j] = Figure.empty
+                    print(i, j, value)
                     if (value > maxValue) {
                         maxValue = value
                         x = i
@@ -54,7 +55,7 @@ class ComputerMinMax: PlayerClass {
         count += 1
         
         if (field.won()) {
-            return  -1
+            return  -1-depth
         }
         if (field.draw() || depth == 0) {
             return 0
@@ -83,7 +84,7 @@ class ComputerMinMax: PlayerClass {
         count += 1
         
         if (field.won()) {
-            return 1
+            return 1+depth
         }
         if (field.draw() || depth == 0) {
             return 0
