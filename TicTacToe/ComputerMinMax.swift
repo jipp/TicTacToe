@@ -8,6 +8,8 @@
 
 import Foundation
 
+let debug: Bool = false
+
 class ComputerMinMax: PlayerClass {
     var count: Int = 0
     
@@ -18,7 +20,9 @@ class ComputerMinMax: PlayerClass {
         
         (x, y) = maximizing(field, depth: 10, alpha: Int.min, beta: Int.max)
         
-        print(count)
+        if debug {
+            print("Count: \(count)")
+        }
 
         return (x, y)
     }
@@ -35,7 +39,9 @@ class ComputerMinMax: PlayerClass {
                     field.content[i][j] = figure
                     value = minimizing(field, depth: depth-1, alpha: maxValue, beta: beta)
                     field.content[i][j] = Figure.empty
-                    print(i, j, value)
+                    if debug {
+                        print(" Position: \((j, i)) Value: \(value)")
+                    }
                     if (value > maxValue) {
                         maxValue = value
                         x = i
@@ -47,7 +53,11 @@ class ComputerMinMax: PlayerClass {
                 }
             }
         }
-        print("result", x, y, maxValue)
+        
+        if debug {
+            print("Position: \((y, x)) maxValue: \(maxValue)")
+        }
+        
         return (x,y)
     }
 
