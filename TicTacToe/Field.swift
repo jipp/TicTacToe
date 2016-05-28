@@ -23,11 +23,11 @@ class Field {
     }
     
     func getLines() -> Int {
-        return z
+        return self.z
     }
     
     func getSize() -> Int {
-        return z*z
+        return self.z*self.z
     }
     
     func show() {
@@ -80,8 +80,8 @@ class Field {
     }
     
     func draw() -> Bool {
-        for i in 0...getLines()-1 {
-            for j in 0...getLines()-1 {
+        for i in 0...self.z-1 {
+            for j in 0...self.z-1 {
                 if (content[i][j] == Figure.empty) {
                     return false
                 }

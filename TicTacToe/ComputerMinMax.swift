@@ -18,7 +18,7 @@ class ComputerMinMax: PlayerClass {
         
         print("\(figure) turn")
         
-        (x, y) = maximizing(field, depth: 10, alpha: Int.min, beta: Int.max)
+        (x, y) = maximizing(field, depth: 6, alpha: Int.min, beta: Int.max)
         
         if debug {
             print("Count: \(count)")

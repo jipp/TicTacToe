@@ -16,7 +16,7 @@ var x: Int
 var y: Int
 
 while true {
-    field = Field(z: 3)
+    field = Field()
     field!.show()
     gameLoop: for i in 0...field!.getSize()-1 {
         (x, y) = players[i%2].getMove(field!)
