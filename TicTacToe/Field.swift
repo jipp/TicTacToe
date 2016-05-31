@@ -91,7 +91,6 @@ class Field {
     }
     
     func won() -> Bool {
-        var check: Bool = false
         var vSum: Int = 0
         var hSum: Int = 0
         var dSum: Int = 0
@@ -105,8 +104,7 @@ class Field {
                 hSum += field!.content[j][i].rawValue
             }
             if (abs(vSum) == z || abs(hSum) == z) {
-                check = true
-                break
+                return true
             }
         }
         for i in 0...z-1 {
@@ -114,9 +112,6 @@ class Field {
             rSum += field!.content[i][z - 1 - i].rawValue
         }
         if (abs(dSum) == z || abs(rSum) == z) {
-            check = true
-        }
-        if (check == true) {
             return true
         }
         return false
