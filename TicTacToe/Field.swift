@@ -8,6 +8,12 @@
 
 import Foundation
 
+// 1|2|3    0,0|0,1|0,2
+// -----    -----------
+// 4|5|6    1,0|1,1|1,2
+// -----    -----------
+// 7|8|9    2,0|2,1|2,2
+
 class Field {
     var content: [[Figure]]
     var z: Int
@@ -67,6 +73,10 @@ class Field {
     
     func set(x: Int, y: Int, figure: Figure) {
         content[x][y] = figure
+    }
+    
+    func remove(x: Int, y: Int) {
+        content[x][y] = Figure.empty
     }
     
     func getStatus() -> Status {

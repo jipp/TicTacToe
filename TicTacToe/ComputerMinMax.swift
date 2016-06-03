@@ -14,6 +14,9 @@ class ComputerMinMax: PlayerClass {
     var count: Int = 0
     
     override func getMove(field: Field) -> (x: Int, y: Int) {
+        var x: Int = 0
+        var y: Int = 0
+        
         count = 0
         
         print("\(figure) turn")
@@ -30,15 +33,15 @@ class ComputerMinMax: PlayerClass {
     func maximizing(field: Field, depth: Int, alpha: Int, beta: Int) -> (Int, Int) {
         var maxValue: Int = alpha
         var value: Int
-        
-        count += 1
-        
+        var x: Int = 0
+        var y: Int = 0
+
         move: for i in 0...field.getLines()-1 {
             for j in 0...field.getLines()-1 {
                 if (field.content[i][j] == Figure.empty) {
-                    field.content[i][j] = figure
+                    field.set(i, y: j, figure: figure)
                     value = minimizing(field, depth: depth-1, alpha: maxValue, beta: beta)
-                    field.content[i][j] = Figure.empty
+                    field.remove(i, y: j)
                     if debug {
                         print(" Position: \((j, i)) Value: \(value)")
                     }
