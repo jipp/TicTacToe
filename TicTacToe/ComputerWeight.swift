@@ -16,8 +16,8 @@ class ComputerWeight: PlayerClass {
 		var y: Int = 0
     
         print("\(figure) turn")
-		for i in 0...field.getLines()-1 {
-			for j in 0...field.getLines()-1 {
+		for i in 0..<field.getLines() {
+			for j in 0..<field.getLines() {
 				weightTemp = weightPerCell(field, x:i, y:j)
 				if (weightTemp > weightAll) {
 					weightAll = weightTemp
@@ -48,7 +48,7 @@ class ComputerWeight: PlayerClass {
 	func checkRow(field: Field, y: Int) -> Int {
 		var sum: Int = 0
     
-		for x in 0...field.getLines()-1 {
+		for x in 0..<field.getLines() {
 			sum += field.content[x][y].rawValue
 		}
 		return returnWeight(sum)
@@ -57,7 +57,7 @@ class ComputerWeight: PlayerClass {
 	func checkColumn(field: Field, x: Int) -> Int {
 		var sum: Int = 0
     
-		for y in 0...field.getLines()-1 {
+		for y in 0..<field.getLines() {
 			sum += field.content[x][y].rawValue
 		}
 		return returnWeight(sum)
@@ -66,7 +66,7 @@ class ComputerWeight: PlayerClass {
 	func checkBackSlash(field: Field) -> Int {
 		var sum: Int = 0
     
-		for i in 0...field.getLines()-1 {
+		for i in 0..<field.getLines() {
 			sum += field.content[i][i].rawValue
 		}
 		return returnWeight(sum)
@@ -75,7 +75,7 @@ class ComputerWeight: PlayerClass {
 	func checkSlash(field: Field) -> Int {
 		var sum: Int = 0
     
-		for i in 0...field.getLines()-1 {
+		for i in 0..<field.getLines() {
 			sum += field.content[field.getLines()-1-i][i].rawValue
 		}   
 		return returnWeight(sum)

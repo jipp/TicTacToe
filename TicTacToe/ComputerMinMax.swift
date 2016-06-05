@@ -36,8 +36,8 @@ class ComputerMinMax: PlayerClass {
         var x: Int = 0
         var y: Int = 0
 
-        move: for i in 0...field.getLines()-1 {
-            for j in 0...field.getLines()-1 {
+        move: for i in 0..<field.getLines() {
+            for j in 0..<field.getLines() {
                 if (field.content[i][j] == Figure.empty) {
                     field.set(i, y: j, figure: figure)
                     value = minimizing(field, depth: depth-1, alpha: maxValue, beta: beta)
@@ -78,8 +78,8 @@ class ComputerMinMax: PlayerClass {
             return 0
         }
         
-        move: for i in 0...field.getLines()-1 {
-            for j in 0...field.getLines()-1 {
+        move: for i in 0..<field.getLines() {
+            for j in 0..<field.getLines() {
                 if (field.content[i][j] == Figure.empty) {
                     field.content[i][j] = figure
                     value = minimizing(field, depth: depth-1, alpha: maxValue, beta: beta)
@@ -110,8 +110,8 @@ class ComputerMinMax: PlayerClass {
             return 0
         }
         
-        move: for i in 0...field.getLines()-1 {
-            for j in 0...field.getLines()-1 {
+        move: for i in 0..<field.getLines() {
+            for j in 0..<field.getLines() {
                 if (field.content[i][j] == Figure.empty) {
                     field.content[i][j] = getOpponent()
                     value = maximizing(field, depth: depth-1, alpha: alpha, beta: minValue)

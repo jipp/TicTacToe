@@ -37,23 +37,20 @@ class Field {
     }
     
     func show() {
-        for i in 0...z-1 {
-            for j in 0...z-1 {
-                switch content[i][j] {
-                case .X:
-                    print(Figure.X, terminator:"")
-                case .O:
-                    print(Figure.O, terminator:"")
-                default:
+        for i in 0..<self.z {
+            for j in 0..<self.z {
+                if (content[i][j] != Figure.empty) {
+                    print(content[i][j], terminator:"")
+                } else {
                     print(" ", terminator:"")
                 }
-                if (j < z - 1) {
+                if (j < self.z - 1) {
                     print("|", terminator:"")
                 }
             }
             print()
-            if (i < z - 1) {
-                for _ in 1...z-1 {
+            if (i < self.z - 1) {
+                for _ in 1..<self.z {
                     print("--", terminator:"")
                 }
                 print("-")
@@ -63,7 +60,7 @@ class Field {
     }
     
     func allowedMove(x: Int, y: Int) -> Bool {
-        if (x>=0 && x<z && y>=0 && y<z) {
+        if (x>=0 && x<self.z && y>=0 && y<self.z) {
             if (content[x][y] == Figure.empty) {
                 return true
             }
@@ -90,8 +87,8 @@ class Field {
     }
     
     func draw() -> Bool {
-        for i in 0...self.z-1 {
-            for j in 0...self.z-1 {
+        for i in 0..<self.z {
+            for j in 0..<self.z {
                 if (content[i][j] == Figure.empty) {
                     return false
                 }
@@ -106,22 +103,22 @@ class Field {
         var dSum: Int = 0
         var rSum: Int = 0
         
-        for i in 0...z-1 {
+        for i in 0..<self.z {
             hSum = 0
             vSum = 0
-            for j in 0...z-1 {
+            for j in 0..<self.z {
                 vSum += field!.content[i][j].rawValue
                 hSum += field!.content[j][i].rawValue
             }
-            if (abs(vSum) == z || abs(hSum) == z) {
+            if (abs(vSum) == self.z || abs(hSum) == self.z) {
                 return true
             }
         }
-        for i in 0...z-1 {
+        for i in 0..<self.z {
             dSum += field!.content[i][i].rawValue
-            rSum += field!.content[i][z - 1 - i].rawValue
+            rSum += field!.content[i][self.z - 1 - i].rawValue
         }
-        if (abs(dSum) == z || abs(rSum) == z) {
+        if (abs(dSum) == self.z || abs(rSum) == self.z) {
             return true
         }
         return false
