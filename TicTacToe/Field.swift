@@ -20,12 +20,12 @@ class Field {
 
     init() {
         self.z = 3
-        content = Array(count: self.z, repeatedValue: Array(count: self.z, repeatedValue: Figure.empty))
+        content = Array(repeating: Array(repeating: Figure.empty, count: self.z), count: self.z)
     }
 
     init(z: Int) {
         self.z = z
-        content = Array(count: self.z, repeatedValue: Array(count: self.z, repeatedValue: Figure.empty))
+        content = Array(repeating: Array(repeating: Figure.empty, count: self.z), count: self.z)
     }
     
     func getLines() -> Int {
@@ -59,7 +59,7 @@ class Field {
         print()
     }
     
-    func allowedMove(x: Int, y: Int) -> Bool {
+    func allowedMove(_ x: Int, y: Int) -> Bool {
         if (x>=0 && x<self.z && y>=0 && y<self.z) {
             if (content[x][y] == Figure.empty) {
                 return true
@@ -68,11 +68,11 @@ class Field {
         return false
     }
     
-    func set(x: Int, y: Int, figure: Figure) {
+    func set(_ x: Int, y: Int, figure: Figure) {
         content[x][y] = figure
     }
     
-    func remove(x: Int, y: Int) {
+    func remove(_ x: Int, y: Int) {
         content[x][y] = Figure.empty
     }
     

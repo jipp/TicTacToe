@@ -9,8 +9,8 @@
 import Foundation
 
 enum PlayerEnum {
-    case Human
-    case ComputerRandom
-    case ComputerWeight
-    case ComputerMinMax
+    case human
+    case computerRandom
+    case computerWeight
+    case computerMinMax
 }

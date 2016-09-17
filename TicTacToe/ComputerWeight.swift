@@ -9,7 +9,7 @@
 import Foundation
 
 class ComputerWeight: PlayerClass {
-    override func getMove(field: Field) -> (x: Int, y: Int) {
+    override func getMove(_ field: Field) -> (x: Int, y: Int) {
 		var weightTemp: Int = 0
 		var weightAll: Int = 0
 		var x: Int = 0
@@ -29,7 +29,7 @@ class ComputerWeight: PlayerClass {
 		return (x, y)
 	}
 
-	func weightPerCell(field: Field, x: Int, y: Int) -> Int {
+	func weightPerCell(_ field: Field, x: Int, y: Int) -> Int {
 		var weight: Int = 0
 
 		if (field.content[x][y] == Figure.empty) {
@@ -45,7 +45,7 @@ class ComputerWeight: PlayerClass {
 		return weight
 	}
 
-	func checkRow(field: Field, y: Int) -> Int {
+	func checkRow(_ field: Field, y: Int) -> Int {
 		var sum: Int = 0
     
 		for x in 0..<field.getLines() {
@@ -54,7 +54,7 @@ class ComputerWeight: PlayerClass {
 		return returnWeight(sum)
 	}
 
-	func checkColumn(field: Field, x: Int) -> Int {
+	func checkColumn(_ field: Field, x: Int) -> Int {
 		var sum: Int = 0
     
 		for y in 0..<field.getLines() {
@@ -63,7 +63,7 @@ class ComputerWeight: PlayerClass {
 		return returnWeight(sum)
 	}
 
-	func checkBackSlash(field: Field) -> Int {
+	func checkBackSlash(_ field: Field) -> Int {
 		var sum: Int = 0
     
 		for i in 0..<field.getLines() {
@@ -72,7 +72,7 @@ class ComputerWeight: PlayerClass {
 		return returnWeight(sum)
 	}
 
-	func checkSlash(field: Field) -> Int {
+	func checkSlash(_ field: Field) -> Int {
 		var sum: Int = 0
     
 		for i in 0..<field.getLines() {
@@ -81,7 +81,7 @@ class ComputerWeight: PlayerClass {
 		return returnWeight(sum)
 	}
 
-	func returnWeight(cell: Int) -> Int {
+	func returnWeight(_ cell: Int) -> Int {
         if (cell*figure.rawValue > 0) {
             return Int(pow(10.0, Double(abs(cell))))*2
         } else {

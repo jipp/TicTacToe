@@ -13,7 +13,7 @@ let debug: Bool = false
 class ComputerMinMax: PlayerClass {
     var count: Int = 0
     
-    override func getMove(field: Field) -> (x: Int, y: Int) {
+    override func getMove(_ field: Field) -> (x: Int, y: Int) {
         var x: Int = 0
         var y: Int = 0
         
@@ -30,7 +30,7 @@ class ComputerMinMax: PlayerClass {
         return (x, y)
     }
     
-    func maximizing(field: Field, depth: Int, alpha: Int, beta: Int) -> (Int, Int) {
+    func maximizing(_ field: Field, depth: Int, alpha: Int, beta: Int) -> (Int, Int) {
         var maxValue: Int = alpha
         var value: Int
         var x: Int = 0
@@ -65,7 +65,7 @@ class ComputerMinMax: PlayerClass {
     }
 
     
-    func maximizing(field: Field, depth: Int, alpha: Int, beta: Int) -> Int {
+    func maximizing(_ field: Field, depth: Int, alpha: Int, beta: Int) -> Int {
         var maxValue: Int = Int.min
         var value: Int
         
@@ -97,7 +97,7 @@ class ComputerMinMax: PlayerClass {
         return maxValue
     }
 
-    func minimizing(field: Field, depth: Int, alpha: Int, beta: Int) -> Int {
+    func minimizing(_ field: Field, depth: Int, alpha: Int, beta: Int) -> Int {
         var minValue: Int = Int.max
         var value: Int
         
