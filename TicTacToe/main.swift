@@ -19,8 +19,8 @@ while true {
     field = Field()
     field!.show()
     gameLoop: for i in 0..<field!.getSize() {
-        (x, y) = players[i%2].getMove(field!)
-        field!.set(x, y: y, figure: players[i%2].figure)
+        (x, y) = players[i%2].getMove(field: field!)
+        field!.set(x: x, y: y, figure: players[i%2].figure)
         field!.show()
         switch field!.getStatus() {
         case Status.won:

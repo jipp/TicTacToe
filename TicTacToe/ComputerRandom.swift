@@ -9,12 +9,12 @@
 import Foundation
 
 class ComputerRandom: PlayerClass {
-    override func getMove(_ field: Field) -> (x: Int, y: Int) {
+    override func getMove(field: Field) -> (x: Int, y: Int) {
         print("\(figure) turn")
         repeat {
             x = Int(arc4random_uniform(UInt32(field.getLines())))
             y = Int(arc4random_uniform(UInt32(field.getLines())))
-        } while !field.allowedMove(x, y: y)
+        } while !field.allowedMove(x: x, y: y)
         return (x, y)
     }
 }

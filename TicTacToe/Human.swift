@@ -9,7 +9,7 @@
 import Foundation
 
 class Human: PlayerClass {
-    override func getMove(_ field: Field) ->  (Int, Int) {
+    override func getMove(field: Field) ->  (Int, Int) {
         var x: Int = -1
         var y: Int = -1
         var input: String
@@ -24,7 +24,7 @@ class Human: PlayerClass {
                     y = (position - 1) % field.getLines()
                 }
             }
-        } while !field.allowedMove(x, y: y)
+        } while !field.allowedMove(x: x, y: y)
         return (x, y)
     }
 }

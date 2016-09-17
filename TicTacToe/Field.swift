@@ -59,7 +59,7 @@ class Field {
         print()
     }
     
-    func allowedMove(_ x: Int, y: Int) -> Bool {
+    func allowedMove(x: Int, y: Int) -> Bool {
         if (x>=0 && x<self.z && y>=0 && y<self.z) {
             if (content[x][y] == Figure.empty) {
                 return true
@@ -68,11 +68,11 @@ class Field {
         return false
     }
     
-    func set(_ x: Int, y: Int, figure: Figure) {
+    func set(x: Int, y: Int, figure: Figure) {
         content[x][y] = figure
     }
     
-    func remove(_ x: Int, y: Int) {
+    func remove(x: Int, y: Int) {
         content[x][y] = Figure.empty
     }
     

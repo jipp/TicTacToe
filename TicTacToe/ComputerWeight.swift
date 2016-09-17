@@ -9,7 +9,7 @@
 import Foundation
 
 class ComputerWeight: PlayerClass {
-    override func getMove(_ field: Field) -> (x: Int, y: Int) {
+    override func getMove(field: Field) -> (x: Int, y: Int) {
 		var weightTemp: Int = 0
 		var weightAll: Int = 0
 		var x: Int = 0
@@ -18,7 +18,7 @@ class ComputerWeight: PlayerClass {
         print("\(figure) turn")
 		for i in 0..<field.getLines() {
 			for j in 0..<field.getLines() {
-				weightTemp = weightPerCell(field, x:i, y:j)
+				weightTemp = weightPerCell(field: field, x:i, y:j)
 				if (weightTemp > weightAll) {
 					weightAll = weightTemp
                     x = i
@@ -29,59 +29,59 @@ class ComputerWeight: PlayerClass {
 		return (x, y)
 	}
 
-	func weightPerCell(_ field: Field, x: Int, y: Int) -> Int {
+	func weightPerCell(field: Field, x: Int, y: Int) -> Int {
 		var weight: Int = 0
 
 		if (field.content[x][y] == Figure.empty) {
-			weight += checkRow(field, y:y)
-			weight += checkColumn(field, x:x)
+			weight += checkRow(field: field, y:y)
+			weight += checkColumn(field: field, x:x)
 			if (x == y) {
-				weight += checkBackSlash(field)
+				weight += checkBackSlash(field: field)
 			}
 			if (x == field.getLines()-1-y) {
-				weight += checkSlash(field)
+				weight += checkSlash(field: field)
 			}
 		}
 		return weight
 	}
 
-	func checkRow(_ field: Field, y: Int) -> Int {
+	func checkRow(field: Field, y: Int) -> Int {
 		var sum: Int = 0
     
 		for x in 0..<field.getLines() {
 			sum += field.content[x][y].rawValue
 		}
-		return returnWeight(sum)
+		return returnWeight(cell: sum)
 	}
 
-	func checkColumn(_ field: Field, x: Int) -> Int {
+	func checkColumn(field: Field, x: Int) -> Int {
 		var sum: Int = 0
     
 		for y in 0..<field.getLines() {
 			sum += field.content[x][y].rawValue
 		}
-		return returnWeight(sum)
+		return returnWeight(cell: sum)
 	}
 
-	func checkBackSlash(_ field: Field) -> Int {
+	func checkBackSlash(field: Field) -> Int {
 		var sum: Int = 0
     
 		for i in 0..<field.getLines() {
 			sum += field.content[i][i].rawValue
 		}
-		return returnWeight(sum)
+		return returnWeight(cell: sum)
 	}
 
-	func checkSlash(_ field: Field) -> Int {
+	func checkSlash(field: Field) -> Int {
 		var sum: Int = 0
     
 		for i in 0..<field.getLines() {
 			sum += field.content[field.getLines()-1-i][i].rawValue
 		}   
-		return returnWeight(sum)
+		return returnWeight(cell: sum)
 	}
 
-	func returnWeight(_ cell: Int) -> Int {
+	func returnWeight(cell: Int) -> Int {
         if (cell*figure.rawValue > 0) {
             return Int(pow(10.0, Double(abs(cell))))*2
         } else {
